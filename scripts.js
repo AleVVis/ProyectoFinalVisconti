@@ -13,31 +13,27 @@ class Docente {
     new Docente(3, 'Susana', ['Quinto Grado', 'Sexto Grado', 'Séptimo Grado'], 'pass'),
   ];
   
+  let ESTUDIANTES = [
+  
+  ];
+  
   class Estudiante {
     constructor(id, nombre, curso, notas) {
       this.id = id;
       this.nombre = nombre;
       this.curso = curso;
       this.notas = notas;
-      this.promedioFinal = this.calcularPromedioFinal(); // Calcular el promedio final al crear el estudiante
+      this.promedioFinal = null; // Inicializamos el promedio a null, ya que aún no se ha calculado
     }
   
     calcularPromedioFinal() {
       const sumaNotas = this.notas.reduce((a, b) => a + b, 0);
-      return sumaNotas / this.notas.length;
-    }
-  
-    static updatePromedios() {   //Al ser estática, la función se puede llamar directamente en la clase, 
-    //sin necesidad de crear una instancia de la clase. Actualiza los promedios de TODOS los estudiantes.
-      for (const estudiante of ESTUDIANTES) {
-        estudiante.promedioFinal = estudiante.calcularPromedioFinal();
-      }
+      this.promedioFinal = sumaNotas / this.notas.length; // Actualizamos el promedio final cada vez que se calcula
+      return this.promedioFinal;
     }
   }
   
-  let ESTUDIANTES = [
   
-  ];
   
   let currentTeacher = null;
   const loginForm = document.getElementById('loginForm');
@@ -64,6 +60,8 @@ class Docente {
     studentsContainer.innerHTML = '';
   
     for (const estudiante of ESTUDIANTES) {
+      console.log('Datos del estudiante:', estudiante);
+      console.log('Comisiones del docente:', currentTeacher.commissions);
       if (currentTeacher.comisiones.includes(estudiante.curso)) {
         const card = document.createElement('div');
         card.classList.add('card', 'mb-3','small-card');
@@ -139,16 +137,35 @@ class Docente {
   function saveDataToLocalStorage() {
     localStorage.setItem('currentTeacher', JSON.stringify(currentTeacher));
     localStorage.setItem('ESTUDIANTES', JSON.stringify(ESTUDIANTES));
-    
+  
+    // Guardar notas actualizadas
+    const estudiantesConNotas = ESTUDIANTES.map(estudiante => {
+      return {
+        id: estudiante.id,
+        nombre: estudiante.nombre,
+        curso: estudiante.curso,
+        notas: estudiante.notas
+      };
+    });
+    localStorage.setItem('ESTUDIANTES_NOTAS', JSON.stringify(estudiantesConNotas));
+  
     // Guardar promedios actualizados
-    for (const estudiante of ESTUDIANTES) {
-      estudiante.promedioFinal = estudiante.calcularPromedioFinal();
-    }
-    localStorage.setItem('ESTUDIANTES_PROMEDIOS', JSON.stringify(ESTUDIANTES.map(estudiante => ({
-      id: estudiante.id,
-      promedioFinal: estudiante.promedioFinal
-    }))));
+    const estudiantesConPromedios = ESTUDIANTES.map(estudiante => {
+      return {
+        id: estudiante.id,
+        nombre: estudiante.nombre,
+        curso: estudiante.curso,
+        promedioFinal: estudiante.promedioFinal
+      };
+    });
+    localStorage.setItem('ESTUDIANTES_PROMEDIOS', JSON.stringify(estudiantesConPromedios));
+  
+    console.log('Datos guardados en el LocalStorage');
+    console.log('ESTUDIANTES:', ESTUDIANTES);
+    console.log('ESTUDIANTES_NOTAS:', estudiantesConNotas);
+    console.log('ESTUDIANTES_PROMEDIOS:', estudiantesConPromedios);
   }
+  
   
    //Se guarda un nuevo array en el almacenamiento local, llamado 'ESTUDIANTES_PROMEDIOS'.
    //El nuevo array se crea mapeando cada objeto estudiante del array ESTUDIANTES a un nuevo objeto con las propiedades id y promedioFinal.
@@ -156,36 +173,38 @@ class Docente {
   
   
   
-    function retrieveDataFromLocalStorage() {
-      const storedTeacher = localStorage.getItem('currentTeacher');
-      const storedStudents = localStorage.getItem('ESTUDIANTES');
-      const storedStudentAverages = localStorage.getItem('ESTUDIANTES_PROMEDIOS');
-    
-      if (storedTeacher) {
-        currentTeacher = JSON.parse(storedTeacher);
-        welcomeMessage.textContent = `Bienvenido(a), ${currentTeacher.nombre}!`;
-        renderStudents();
-        showWelcomeSection();
-      }
-    
-      if (storedStudents) {
-        const parsedStudents = JSON.parse(storedStudents);
-        for (let i = 0; i < ESTUDIANTES.length; i++) {
-          ESTUDIANTES[i].notas = parsedStudents[i].notas;
-          ESTUDIANTES[i].promedioFinal = parsedStudents[i].promedioFinal;
+   function retrieveDataFromLocalStorage() {
+    const storedTeacher = localStorage.getItem('currentTeacher');
+    const storedStudentNotes = localStorage.getItem('ESTUDIANTES_NOTAS');
+    const storedStudentAverages = localStorage.getItem('ESTUDIANTES_PROMEDIOS');
+  
+    if (storedTeacher && storedStudentNotes && storedStudentAverages) {
+      currentTeacher = JSON.parse(storedTeacher);
+      welcomeMessage.textContent = `Bienvenido(a), ${currentTeacher.nombre}!`;
+  
+      const parsedNotes = JSON.parse(storedStudentNotes);
+      const parsedAverages = JSON.parse(storedStudentAverages);
+  
+      for (const estudiante of ESTUDIANTES) {
+        const storedStudent = parsedNotes.find(student => student.id === estudiante.id);
+        if (storedStudent) {
+          estudiante.notas = storedStudent.notas;
+        }
+  
+        const storedAverage = parsedAverages.find(student => student.id === estudiante.id);
+        if (storedAverage) {
+          estudiante.promedioFinal = storedAverage.promedioFinal;
         }
       }
-    
-      if (storedStudentAverages) {
-        const parsedAverages = JSON.parse(storedStudentAverages);
-        for (let i = 0; i < ESTUDIANTES.length; i++) {
-          const student = ESTUDIANTES.find(estudiante => estudiante.id === parsedAverages[i].id);
-          if (student) {
-            student.promedioFinal = parsedAverages[i].promedioFinal;
-          }
-        }
-      }
+  
+      renderStudents();
+      showWelcomeSection();
+    } else {
+      showLoginForm();
     }
+  }
+  
+  
   
   function loadStudentsFromJSON() {
     fetch('./data/alumnos.json')
@@ -220,6 +239,8 @@ class Docente {
       currentTeacher = teacher;  //Se asigna el docente a la variable currentTeacher.
       welcomeMessage.textContent = `Bienvenido(a), ${currentTeacher.nombre}!`;  //Se actualiza el texto del elemento welcomeMessage para mostrar el mensaje de bienvenida con el nombre del docente.
   
+      retrieveDataFromLocalStorage(); // Llamar a retrieveDataFromLocalStorage después de establecer el docente actual
+  
       renderStudents();  //para generar y mostrar las tarjetas de los estudiantes correspondientes al docente.
       saveDataToLocalStorage();  //para guardar los datos en el almacenamiento local.
       showWelcomeSection();  //para ocultar el formulario de inicio de sesión y mostrar la sección de bienvenida.
@@ -228,9 +249,10 @@ class Docente {
     }
   });
   
+  loadStudentsFromJSON();
   retrieveDataFromLocalStorage();
   showLoginForm();
-  loadStudentsFromJSON();
+  
   
   
   
