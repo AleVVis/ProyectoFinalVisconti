@@ -1,0 +1,284 @@
+{
+    "estudiante": [
+      {
+        "id": 1,
+        "nombre": "Juan Pérez",
+        "curso": "Primer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 2,
+        "nombre": "María Gómez",
+        "curso": "Primer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 3,
+        "nombre": "Carlos Rodríguez",
+        "curso": "Segundo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 4,
+        "nombre": "Ana López",
+        "curso": "Segundo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 5,
+        "nombre": "Pedro Ramírez",
+        "curso": "Tercer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 6,
+        "nombre": "Luisa Martínez",
+        "curso": "Tercer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 7,
+        "nombre": "Javier Silva",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 8,
+        "nombre": "Laura Castro",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 9,
+        "nombre": "Andrés Méndez",
+        "curso": "Quinto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 10,
+        "nombre": "Camila Herrera",
+        "curso": "Quinto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 11,
+        "nombre": "Gabriel Torres",
+        "curso": "Sexto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 12,
+        "nombre": "Valentina Medina",
+        "curso": "Sexto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 13,
+        "nombre": "Francisco Ríos",
+        "curso": "Séptimo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 14,
+        "nombre": "Isabella Ortega",
+        "curso": "Séptimo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 15,
+        "nombre": "Santiago Navarro",
+        "curso": "Primer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 16,
+        "nombre": "Daniela Torres",
+        "curso": "Primer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 17,
+        "nombre": "Mateo Sánchez",
+        "curso": "Segundo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 18,
+        "nombre": "Fernanda Gutiérrez",
+        "curso": "Segundo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 19,
+        "nombre": "Emilio Castro",
+        "curso": "Tercer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 20,
+        "nombre": "Gabriela Ruiz",
+        "curso": "Tercer Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 21,
+        "nombre": "Ricardo Mendoza",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 22,
+        "nombre": "Abril Soto",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 23,
+        "nombre": "Diego Ramírez",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 24,
+        "nombre": "Valeria Paredes",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 25,
+        "nombre": "Samuel Ríos",
+        "curso": "Quinto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 26,
+        "nombre": "Lucía Morales",
+        "curso": "Quinto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 27,
+        "nombre": "Juan Pablo Castro",
+        "curso": "Quinto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 28,
+        "nombre": "Isabel Vargas",
+        "curso": "Quinto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 29,
+        "nombre": "Fernando Jiménez",
+        "curso": "Sexto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 30,
+        "nombre": "Sofía Silva",
+        "curso": "Sexto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 31,
+        "nombre": "Héctor Medina",
+        "curso": "Sexto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 32,
+        "nombre": "Carolina López",
+        "curso": "Sexto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 33,
+        "nombre": "Andrea Torres",
+        "curso": "Séptimo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 34,
+        "nombre": "Martín Guzmán",
+        "curso": "Séptimo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 35,
+        "nombre": "Valentina Sánchez",
+        "curso": "Séptimo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 36,
+        "nombre": "Jorge Hernández",
+        "curso": "Séptimo Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 37,
+        "nombre": "Paula Herrera",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 38,
+        "nombre": "Emilio Mora",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 39,
+        "nombre": "Renata Guerra",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      },
+      {
+        "id": 40,
+        "nombre": "Maximiliano Ortiz",
+        "curso": "Cuarto Grado",
+        "notas": [0, 0, 0],
+        "promedioFinal": 0
+      }
+    ]
+  }
